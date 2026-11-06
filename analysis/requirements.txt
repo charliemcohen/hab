@@ -1,0 +1,7 @@
+# Tested with Python 3.12 and: pandas 3.0.2, numpy 2.4.4, matplotlib 3.10.8, reportlab 4.4.10, Pillow 12.1.1
+# rotation_from_video.py and check_clips.py also need ffmpeg on PATH
+pandas
+numpy
+matplotlib
+Pillow
+reportlab

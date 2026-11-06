@@ -1,0 +1,19 @@
+Reaction-wheel controller readback (NOT flight data)
+Read from the Nano over USB serial (115200) after recovery. "T" = status, "E" = summary of the most recent armed run, stored in EEPROM.
+I re-armed the wheel for a ground test after Flight 2, so this summary describes that ground run, not the flight.
+The build flags and sign constants in the status line are the same ones that flew.
+Ground test setup: payload hung indoors from a foam board across a stepladder by a single line, a swivel, and a
+four-line bridle to the box corners (photos/07_ground_test_rig.jpg).
+
+#STATUS HAB-RW 1.2.0-ground state=3 SIGN_COMMISSIONED=1 MDS=1 SA=1 BIAS=1 faults=0x0 first=255 selfcheck_fail=0x0
+#SUMMARY dur_s=1200 peak_err_cdeg=170 t_eval_x40ms=29750 t_in2deg_x40ms=29700 t_in3deg_x40ms=29700 w_min_drpm=590 w_max_drpm=970 t_limited_x40ms=50 t_saturated_x40ms=0 first_fault_bit=5 end=2 faults=0x20
+
+Decoded:
+  run length (capture to end)        1200 s
+  peak heading error                 1.70 deg (excludes the 10 s settle after capture)
+  time evaluated                     1190 s
+  time within 2 deg / 3 deg          1188 s / 1188 s
+  time LIMITED (near wheel-speed edge)  2.0 s
+  time saturated                     0 s
+  wheel speed range                  59.0 to 97.0 rpm (bias 75, soft band 45 to 105)
+  how it ended                       end=2 (fault), first fault bit 5 = F_TILT (payload tilt > 15 deg)
